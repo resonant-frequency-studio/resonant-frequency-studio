@@ -99,7 +99,7 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-[#121212] text-[#E4E4DE]">
+    <main className="min-h-screen bg-brand-ink text-brand-ivory">
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(89,95,57,0.25)_0%,rgba(18,18,18,1)_60%)]" />
         <div className="container relative z-10 mx-auto max-w-5xl px-6">
@@ -110,7 +110,7 @@ export default function TermsPage() {
             Clear terms so every build stays aligned, on-time, and on-brand.
           </h1>
           <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <p className="max-w-3xl text-lg text-[#E4E4DE]/80">
+            <p className="max-w-3xl text-lg text-brand-ivory/80">
               Last Updated:{' '}
               {new Date().toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -120,7 +120,7 @@ export default function TermsPage() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#ACAF9C] transition hover:text-[#E4E4DE]"
+              className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#ACAF9C] transition hover:text-brand-ivory"
             >
               ← Back to Home
             </Link>
@@ -139,7 +139,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-semibold uppercase tracking-[0.08em] md:text-3xl">
                 {section.title}
               </h2>
-              <div className="mt-6 space-y-4 text-base leading-relaxed text-[#E4E4DE]/85 md:text-lg">
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-brand-ivory/85 md:text-lg">
                 {section.body.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}

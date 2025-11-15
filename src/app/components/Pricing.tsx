@@ -1,3 +1,4 @@
+import { cx } from 'class-variance-authority';
 import Link from 'next/link';
 
 interface PricingPlan {
@@ -51,16 +52,16 @@ export default function Pricing() {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(89,95,57,0.2)_0%,rgba(18,18,18,0.2)_60%)]" />
       <div className="relative container mx-auto w-full px-4 md:px-12">
-        <div className="section-wrapper flex flex-col gap-12">
-          <div className="section-heading-wrap flex flex-col md:flex-row justify-between items-start gap-8">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
             <div className="flex-1">
               <span className="text-base uppercase tracking-[0.35em] text-[#ACAF9C]">
                 Pricing
               </span>
-              <h2 className="mt-6 text-4xl md:text-6xl font-semibold text-[#E4E4DE] leading-tight">
+              <h3 className="mt-6 text-4xl md:text-6xl font-semibold text-brand-ivory leading-tight">
                 Built-for-you partnerships, not one-off packages.
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg text-[#E4E4DE]/70">
+              </h3>
+              <p className="mt-4 max-w-2xl text-lg text-brand-ivory/70">
                 Every engagement includes strategy, design, and development
                 tuned to your roadmap. Choose the cadence that matches your
                 momentum, or reach out for a custom scope.
@@ -68,11 +69,11 @@ export default function Pricing() {
             </div>
           </div>
 
-          <div className="section-content-wrap grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {plans.map((plan) => (
               <div
                 key={plan.id}
-                className="group flex h-full flex-col rounded-[36px] border border-white/10 bg-white/5 p-10 text-[#E4E4DE] backdrop-blur transition hover:border-white/20 hover:bg-white/8"
+                className="group flex h-full flex-col rounded-[36px] border border-white/10 bg-white/5 p-10 text-brand-ivory backdrop-blur transition hover:border-white/20 hover:bg-white/8"
               >
                 <div className="flex flex-1 flex-col gap-8">
                   <div className="flex flex-col gap-6">
@@ -80,25 +81,25 @@ export default function Pricing() {
                       {plan.name}
                     </div>
                     <div className="flex items-end gap-2">
-                      <h3 className="text-4xl font-semibold text-[#E4E4DE]">
+                      <h3 className="text-4xl font-semibold text-brand-ivory">
                         {plan.price}
                       </h3>
-                      <span className="pb-1 text-sm uppercase tracking-[0.3em] text-[#E4E4DE]/60">
+                      <span className="pb-1 text-sm uppercase tracking-[0.3em] text-brand-ivory/60">
                         {plan.period}
                       </span>
                     </div>
-                    <p className="text-[#E4E4DE]/70">{plan.description}</p>
+                    <p className="text-brand-ivory/70">{plan.description}</p>
                   </div>
 
                   <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-[#E4E4DE]">
+                    <h4 className="text-lg font-semibold text-brand-ivory">
                       What&apos;s included
                     </h4>
-                    <ul className="space-y-3 text-sm text-[#E4E4DE]/80">
+                    <ul className="space-y-3 text-sm text-brand-ivory/80">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-3">
                           <svg
-                            className="h-5 w-5 text-[#595f39]"
+                            className="h-5 w-5 text-brand-sage"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -113,7 +114,7 @@ export default function Pricing() {
                       ))}
                       <li className="flex items-center gap-3">
                         <svg
-                          className="h-5 w-5 text-[#595f39]"
+                          className="h-5 w-5 text-brand-sage"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -128,17 +129,21 @@ export default function Pricing() {
                     </ul>
                   </div>
                 </div>
-
-                <Link
-                  href="#contact"
-                  className="mt-10 inline-flex items-center justify-center gap-3 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-[#E4E4DE] ring-1 ring-white/30 transition hover:bg-white/20"
-                >
-                  Speak With Us
-                  <span className="text-lg">→</span>
-                </Link>
               </div>
             ))}
           </div>
+          <Link
+            href="#contact"
+            className={cx(
+              'inline-flex items-center gap-2 self-center rounded-full',
+              'border border-white/40 bg-white/10 px-6 py-3 mt-12 text-base',
+              'font-semibold text-white backdrop-blur',
+              'transition hover:bg-white/20 hover:border-white'
+            )}
+          >
+            Let's Build Something That Resonates
+            <span className="text-xl">→</span>
+          </Link>
         </div>
       </div>
     </section>

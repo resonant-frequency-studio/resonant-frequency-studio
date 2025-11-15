@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-44 text-[#E4E4DE]"
+      className="relative overflow-hidden py-44 text-brand-ivory"
       ref={sectionRef}
     >
       <motion.div
@@ -28,8 +28,8 @@ export default function About() {
       />
 
       <div className="relative container mx-auto w-full px-12">
-        <div className="section-wrapper flex flex-col gap-12">
-          <div className="section-heading-wrap flex flex-col items-center justify-between gap-8 md:flex-row">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
             <div className="flex-1">
               <h3 className="text-4xl font-semibold leading-tight md:text-7xl">
                 Every brand has a frequency. <br />
@@ -37,7 +37,7 @@ export default function About() {
               </h3>
             </div>
             <div className="flex-1">
-              <p className="text-2xl text-[#E4E4DE]">
+              <p className="text-2xl text-brand-ivory">
                 We're not just here to build visuals — we're here to bring
                 visions to life, empower bold ideas, and make brands
                 unforgettable. Every pixel, word, and interaction is crafted

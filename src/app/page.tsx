@@ -11,9 +11,9 @@ import VisionExecution from './components/VisionExecution';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#121212] text-[#E4E4DE]">
+    <div className="min-h-screen bg-brand-ink text-brand-ivory">
       <Navigation />
-      <main className="main-wrapper">
+      <main>
         <Hero />
         <Mission />
         <Overview />

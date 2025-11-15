@@ -1,5 +1,6 @@
 'use client';
 
+import { cx } from 'class-variance-authority';
 import { motion } from 'framer-motion';
 
 const pillars = [
@@ -36,7 +37,7 @@ export default function VisionExecution() {
           <span className="text-base uppercase tracking-[0.45em] text-[#ACAF9C]">
             Our Advantage
           </span>
-          <h3 className="mt-6 text-4xl text-[#E4E4DE] font-semibold md:text-8xl">
+          <h3 className="mt-6 text-4xl text-brand-ivory font-semibold md:text-8xl">
             Where Vision Meets Execution
           </h3>
         </div>
@@ -48,7 +49,7 @@ export default function VisionExecution() {
               initial="rest"
               whileHover="hover"
               animate="rest"
-              className="group relative flex flex-col gap-8 px-8 py-16 text-[#E4E4DE] md:flex-row md:items-center md:gap-0"
+              className="group relative flex flex-col gap-8 px-8 py-16 text-brand-ivory md:flex-row md:items-center md:gap-0"
             >
               <motion.span
                 variants={{
@@ -56,10 +57,17 @@ export default function VisionExecution() {
                   hover: { scaleX: 1 },
                 }}
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
-                className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-[#595f39]"
+                className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-brand-sage"
               />
               <div className="flex w-full justify-start md:w-1/5">
-                <span className="inline-flex items-center rounded-full bg-white text-sm font-semibold uppercase tracking-[0.3em] text-black px-5 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
+                <span
+                  className={cx(
+                    'inline-flex items-center rounded-full',
+                    'bg-white text-sm tracking-[0.3em] px-5 py-2',
+                    'font-semibold text-brand-ink backdrop-blur',
+                    'shadow-[0_8px_20px_rgba(0,0,0,0.25)]'
+                  )}
+                >
                   {pillar.id}
                 </span>
               </div>
@@ -69,7 +77,7 @@ export default function VisionExecution() {
                 </h3>
               </div>
               <div className="flex w-full justify-start md:w-2/5 md:justify-end">
-                <p className="max-w-sm text-base text-[#E4E4DE]/80 md:text-right md:text-lg">
+                <p className="max-w-sm text-base text-brand-ivory/80 md:text-right md:text-lg">
                   {pillar.description}
                 </p>
               </div>

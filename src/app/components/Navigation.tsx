@@ -4,6 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+const NAV_LINKS = [
+  { href: '#about', text: 'About' },
+  { href: '#overview', text: 'Overview' },
+  { href: '#works', text: 'Works' },
+  { href: '#pricing', text: 'Pricing' },
+  { href: '#question', text: 'FAQ' },
+  { href: '#contact', text: 'Contact' },
+];
+
 export default function Navigation() {
   const { scrollY } = useScroll();
 
@@ -32,15 +41,6 @@ export default function Navigation() {
     ['0 8px 32px 0 rgba(0, 0, 0, 0)', '0 8px 32px 0 rgba(0, 0, 0, 0.1)']
   );
 
-  const navLinks = [
-    { href: '#about', text: 'About' },
-    { href: '#overview', text: 'Overview' },
-    { href: '#works', text: 'Works' },
-    { href: '#pricing', text: 'Pricing' },
-    { href: '#question', text: 'FAQ' },
-    { href: '#contact', text: 'Contact' },
-  ];
-
   return (
     <motion.header
       className="fixed z-20 top-0 left-0 right-0"
@@ -68,11 +68,11 @@ export default function Navigation() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="inline-block transition-all duration-400 text-base text-white hover:opacity-70 cursor-pointer"
+              className="inline-block transition-all duration-400 text-base text-brand-ivory hover:opacity-70 cursor-pointer"
             >
               {link.text}
             </Link>

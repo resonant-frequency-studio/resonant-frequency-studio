@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
+import { cx } from 'class-variance-authority';
 
-const cards = [
+const CARDS = [
   {
     title: 'Brand & Identity',
     description: 'Logos, typography, and style guides that align teams',
@@ -35,12 +36,12 @@ export default function Overview() {
   return (
     <section
       id="overview"
-      className="relative overflow-hidden py-44 text-[#E4E4DE] rounded-tl-[10vw]"
+      className="relative overflow-hidden py-44 text-brand-ivory rounded-tl-[10vw]"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(89,95,57,0.2)_0%,rgba(18,18,18,1)_60%)]" />
       <div className="relative container mx-auto w-full px-12">
-        <div className="section-wrapper flex flex-col gap-12">
-          <div className="section-heading-wrap flex flex-col items-start justify-between gap-8 md:flex-row">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
             <div className="flex-1 text-center">
               <h3 className="mb-12 text-4xl font-semibold leading-tight md:text-8xl">
                 Crafting digital experiences that hit the right frequency.
@@ -54,9 +55,9 @@ export default function Overview() {
             </div>
           </div>
 
-          <div className="section-content-wrap mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             <div />
-            {cards.map((card) => (
+            {CARDS.map((card) => (
               <SpotlightCard key={card.title} className="bg-[#292929]">
                 <div className="flex flex-col items-start gap-6 text-left">
                   <motion.div
@@ -67,7 +68,7 @@ export default function Overview() {
                       transformStyle: 'preserve-3d',
                       transformPerspective: 600,
                     }}
-                    className="inline-flex size-16 items-center justify-center rounded-full bg-[#E4E4DE]/10"
+                    className="inline-flex size-16 items-center justify-center rounded-full bg-brand-ivory/10"
                   >
                     <Image
                       src={card.iconSrc}
@@ -78,7 +79,12 @@ export default function Overview() {
                       priority
                     />
                   </motion.div>
-                  <h3 className="mt-36 w-full text-4xl font-bold uppercase relative pb-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#595f39] after:content-['']">
+                  <h3
+                    className={cx(
+                      'mt-36 w-full text-4xl font-bold uppercase relative pb-12',
+                      "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-brand-sage after:content-['']"
+                    )}
+                  >
                     {card.title}
                   </h3>
                   <p className="text-xl">{card.description}</p>

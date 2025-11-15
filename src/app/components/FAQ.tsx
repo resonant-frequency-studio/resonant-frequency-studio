@@ -45,23 +45,23 @@ export default function FAQ() {
   const [openId, setOpenId] = useState<number | null>(1);
 
   return (
-    <section id="question" className="section questions py-20">
+    <section id="question" className="pb-44">
       <div className="container mx-auto px-4 w-full md:px-12">
-        <div className="section-wrapper flex flex-col gap-12">
-          <div className="section-heading-wrap flex flex-col md:flex-row justify-between items-start gap-8">
+        <div className="flex flex-col gap-12">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
             <div className="flex-1">
-              <h2 className="text-5xl md:text-6xl font-bold text-[#E4E4DE] leading-tight mb-4">
+              <div className="text-brand-sage mb-4">FAQ</div>
+              <h3 className="text-5xl md:text-6xl font-bold text-brand-ivory leading-tight mb-4">
                 Questions
-              </h2>
+              </h3>
             </div>
-            <div className="text-[#595f39]">FAQ</div>
           </div>
 
-          <div className="section-content-wrap mt-16 divide-y divide-white/10">
+          <div className="mt-16 divide-y divide-white/10">
             {faqItems.map((item) => (
               <div
                 key={item.id}
-                className="faq-item px-6 py-12 text-[#E4E4DE] md:px-12"
+                className="px-6 py-12 text-brand-ivory md:px-12"
               >
                 <button
                   onClick={() => setOpenId(openId === item.id ? null : item.id)}
@@ -79,7 +79,7 @@ export default function FAQ() {
                   </div>
                   <div className="flex w-full justify-end md:w-1/5">
                     <svg
-                      className={`h-6 w-6 transform text-[#E4E4DE] transition-transform duration-300 ${
+                      className={`h-6 w-6 transform text-brand-ivory transition-transform duration-300 ${
                         openId === item.id ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -101,7 +101,7 @@ export default function FAQ() {
                   }`}
                 >
                   <div className="md:ml-auto md:w-7/12 md:text-right">
-                    <p className="text-base text-[#E4E4DE]/80 md:text-lg">
+                    <p className="text-base text-brand-ivory/80 md:text-lg">
                       {item.answer}
                     </p>
                   </div>
