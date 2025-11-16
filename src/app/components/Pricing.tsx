@@ -11,7 +11,7 @@ interface PricingPlan {
   revisions: string;
 }
 
-const plans: PricingPlan[] = [
+const PLANS: PricingPlan[] = [
   {
     id: 1,
     name: 'Basic',
@@ -70,7 +70,7 @@ export default function Pricing() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {plans.map((plan) => (
+            {PLANS.map((plan) => (
               <div
                 key={plan.id}
                 className="group flex h-full flex-col rounded-[36px] border border-white/10 bg-white/5 p-10 text-brand-ivory backdrop-blur transition hover:border-white/20 hover:bg-white/8"
@@ -141,7 +141,7 @@ export default function Pricing() {
               'transition hover:bg-white/20 hover:border-white'
             )}
           >
-            Let's Build Something That Resonates
+            Let&apos;s Build Something That Resonates
             <span className="text-xl">→</span>
           </Link>
         </div>

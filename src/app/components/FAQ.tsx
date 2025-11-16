@@ -8,7 +8,7 @@ interface FAQItem {
   answer: string;
 }
 
-const faqItems: FAQItem[] = [
+const FAQ_ITEMS: FAQItem[] = [
   {
     id: 1,
     question: 'What services do you offer?',
@@ -58,7 +58,7 @@ export default function FAQ() {
           </div>
 
           <div className="mt-16 divide-y divide-white/10">
-            {faqItems.map((item) => (
+            {FAQ_ITEMS.map((item) => (
               <div
                 key={item.id}
                 className="px-6 py-12 text-brand-ivory md:px-12"
