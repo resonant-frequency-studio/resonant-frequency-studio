@@ -1,8 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  AnimatePresence,
+} from 'framer-motion';
+import { cx } from 'class-variance-authority';
 
 const NAV_LINKS = [
   { href: '#about', text: 'About' },
@@ -13,72 +20,110 @@ const NAV_LINKS = [
   { href: '#contact', text: 'Contact' },
 ];
 
-export default function Navigation() {
+export default function Navigation({
+  animateEntrance = false,
+}: {
+  animateEntrance?: boolean;
+}) {
   const { scrollY } = useScroll();
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Transform scroll position to animated values
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 50],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.1)']
-  );
-
-  const backdropBlur = useTransform(
-    scrollY,
-    [0, 50],
-    ['blur(0px)', 'blur(20px)']
-  );
-
-  const borderColor = useTransform(
-    scrollY,
-    [0, 50],
-    ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.2)']
-  );
-
-  const boxShadow = useTransform(
-    scrollY,
-    [0, 50],
-    ['0 8px 32px 0 rgba(0, 0, 0, 0)', '0 8px 32px 0 rgba(0, 0, 0, 0.1)']
-  );
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (latest > 100 && !isCollapsed) {
+      setIsCollapsed(true);
+      setIsOpen(false);
+    } else if (latest <= 100 && isCollapsed) {
+      setIsCollapsed(false);
+      setIsOpen(false);
+    }
+  });
 
   return (
     <motion.header
-      className="fixed z-20 top-0 left-0 right-0"
-      style={{
-        backgroundColor,
-        backdropFilter: backdropBlur,
-        borderBottom: `1px solid`,
-        borderColor,
-        boxShadow,
-      }}
+      initial={animateEntrance ? { x: 100, opacity: 0 } : false}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ delay: 2.0, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed z-50 top-0 right-0 p-4 md:p-8"
     >
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="brand flex items-center gap-2 transition-all duration-400 cursor-pointer"
-        >
-          <Image
-            src="/resonant-frequency-logo.png"
-            alt="Resonant Frequency Studio"
-            width={175}
-            height={32}
-            className="h-8 w-auto"
-          />
-          <span className="sr-only">Resonant Frequency Studio</span>
-        </Link>
+      <motion.nav
+        initial={false}
+        animate={isCollapsed ? (isOpen ? 'open' : 'collapsed') : 'full'}
+        variants={{
+          full: { width: 'auto', height: 'auto', borderRadius: '1rem' },
+          collapsed: { width: '46px', height: '46px', borderRadius: '50%' },
+          open: { width: 'auto', height: 'auto', borderRadius: '1rem' },
+        }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="bg-[#CDCAB7] border-[#484D2E] border relative flex items-center justify-center overflow-hidden pointer-events-auto"
+        style={{ transformOrigin: 'top right' }}
+      >
+        <div className="flex items-center p-2">
+          {/* Links - Visible in Full or Open state */}
+          <div
+            className={`${isCollapsed && !isOpen ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'} transition-all duration-500 ease-in-out flex items-center gap-8`}
+          >
+            {NAV_LINKS.map((link, index) => (
+              <motion.div
+                key={link.href}
+                initial={
+                  animateEntrance && !isCollapsed ? { x: 50, opacity: 0 } : {}
+                }
+                animate={
+                  animateEntrance && !isCollapsed ? { x: 0, opacity: 1 } : {}
+                }
+                transition={{
+                  delay:
+                    (animateEntrance && !isCollapsed ? 2.2 : 0) + index * 0.1,
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="whitespace-nowrap"
+              >
+                <Link
+                  href={link.href}
+                  className="inline-block transition-all duration-400 text-xl hover:opacity-70 cursor-pointer text-[#484D2E]"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.text}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
 
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="inline-block transition-all duration-400 text-base text-brand-ivory hover:opacity-70 cursor-pointer"
-            >
-              {link.text}
-            </Link>
-          ))}
+          {/* Toggle Button - Visible only when collapsed (as hamburger) or open (as close) */}
+          <AnimatePresence>
+            {isCollapsed && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center justify-center text-[#484D2E] shrink-0"
+              >
+                <div className={cx('space-y-1.5', { ['pl-6']: isOpen })}>
+                  <motion.span
+                    animate={
+                      isOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }
+                    }
+                    className="block w-6 h-0.5 bg-[#484D2E]"
+                  />
+                  <motion.span
+                    animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                    className="block w-6 h-0.5 bg-[#484D2E]"
+                  />
+                  <motion.span
+                    animate={
+                      isOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }
+                    }
+                    className="block w-6 h-0.5 bg-[#484D2E]"
+                  />
+                </div>
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
-      </nav>
+      </motion.nav>
     </motion.header>
   );
 }

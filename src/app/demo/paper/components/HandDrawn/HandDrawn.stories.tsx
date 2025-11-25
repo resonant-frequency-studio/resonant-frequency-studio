@@ -1,0 +1,524 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import {
+  HandDrawnBox,
+  HandDrawnCircle,
+  ScrollAnimated,
+  InViewAnimated,
+  SequenceAnimated,
+} from './index';
+
+const meta: Meta = {
+  title: 'Components/HandDrawn',
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj;
+
+// ============================================================================
+// SCROLL MODE EXAMPLES
+// ============================================================================
+
+// Default scroll-based animation - Box
+export const ScrollBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9]">
+      <div className="h-screen flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+      </div>
+      <ScrollAnimated initialSize="40%" finalSize="100%">
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </ScrollAnimated>
+      <div className="h-screen" />
+    </div>
+  ),
+};
+
+// Default scroll-based animation - Circle
+export const ScrollCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9]">
+      <div className="h-screen flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+      </div>
+      <ScrollAnimated initialSize="40%" finalSize="100%">
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </ScrollAnimated>
+      <div className="h-screen" />
+    </div>
+  ),
+};
+
+// ============================================================================
+// INVIEW MODE EXAMPLES
+// ============================================================================
+
+// InView mode - Box
+export const InViewBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] min-h-[200vh]">
+      <div className="h-screen flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+      </div>
+      <div className="h-screen flex items-center justify-center">
+        <InViewAnimated initialSize="400px" enableScale={false}>
+          {(props) => (
+            <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+          )}
+        </InViewAnimated>
+      </div>
+    </div>
+  ),
+};
+
+// InView mode - Circle
+export const InViewCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] min-h-[200vh]">
+      <div className="h-screen flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+      </div>
+      <div className="h-screen flex items-center justify-center">
+        <InViewAnimated initialSize="400px" enableScale={false}>
+          {(props) => (
+            <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5} />
+          )}
+        </InViewAnimated>
+      </div>
+    </div>
+  ),
+};
+
+// ============================================================================
+// SEQUENCE MODE EXAMPLES
+// ============================================================================
+
+// Sequence mode - Box
+export const SequenceBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <SequenceAnimated initialSize="200px" finalSize="400px" delay={500}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </SequenceAnimated>
+    </div>
+  ),
+};
+
+// Sequence mode - Circle
+export const SequenceCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <SequenceAnimated initialSize="200px" finalSize="400px" delay={500}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </SequenceAnimated>
+    </div>
+  ),
+};
+
+// ============================================================================
+// SIZE VARIANTS
+// ============================================================================
+
+// Small Box
+export const SmallBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="300px" enableScale={false}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// Small Circle
+export const SmallCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="300px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// ============================================================================
+// STYLE VARIANTS
+// ============================================================================
+
+// Different Color - Box
+export const ColoredBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => <HandDrawnBox {...props} color="#FF6B6B" strokeWidth={2} />}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// Different Color - Circle
+export const ColoredCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#FF6B6B" strokeWidth={2} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// High Wobble - Box
+export const HighWobbleBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#4ECDC4" wobbleIntensity={2} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// High Wobble - Circle
+export const HighWobbleCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#4ECDC4" wobbleIntensity={2} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// No Wobble - Box
+export const NoWobbleBox: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" wobbleIntensity={0} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// No Wobble - Circle
+export const NoWobbleCircle: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" wobbleIntensity={0} />
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// ============================================================================
+// NESTED EXAMPLES
+// ============================================================================
+
+// Nested Boxes
+export const NestedBoxes: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center relative">
+      <div className="grid grid-cols-2 gap-8 p-8">
+        <div className="flex items-center justify-center">
+          <div className="w-full h-96">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={0}>
+              {(props) => (
+                <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+              )}
+            </InViewAnimated>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-96">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={200}>
+              {(props) => (
+                <HandDrawnCircle {...props} color="#6B7456" strokeWidth={0.5} />
+              )}
+            </InViewAnimated>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-96">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={400}>
+              {(props) => (
+                <HandDrawnBox {...props} color="#8B9A6E" strokeWidth={0.5} />
+              )}
+            </InViewAnimated>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-96">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={600}>
+              {(props) => (
+                <HandDrawnCircle {...props} color="#A8B88B" strokeWidth={0.5} />
+              )}
+            </InViewAnimated>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Nested Circles
+export const NestedCircles: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center relative">
+      <div className="relative w-full h-full">
+        <InViewAnimated initialSize="80%" enableScale={false}>
+          {(props) => (
+            <HandDrawnCircle {...props} color="#484D2E" strokeWidth={1} />
+          )}
+        </InViewAnimated>
+        <div className="absolute inset-0">
+          <InViewAnimated initialSize="60%" delay={500} enableScale={false}>
+            {(props) => (
+              <HandDrawnCircle {...props} color="#6B7456" strokeWidth={1} />
+            )}
+          </InViewAnimated>
+        </div>
+        <div className="absolute inset-0">
+          <InViewAnimated initialSize="40%" delay={1000} enableScale={false}>
+            {(props) => (
+              <HandDrawnCircle {...props} color="#8B9A6E" strokeWidth={1} />
+            )}
+          </InViewAnimated>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// ============================================================================
+// SEQUENTIAL EXAMPLES
+// ============================================================================
+
+// Sequential Boxes
+export const SequentialBoxes: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen grid grid-cols-3 gap-8 p-8">
+      {[0, 1, 2].map((i) => (
+        <SequenceAnimated
+          key={i}
+          initialSize="100%"
+          enableScale={false}
+          delay={i * 1500}
+        >
+          {(props) => (
+            <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5} />
+          )}
+        </SequenceAnimated>
+      ))}
+    </div>
+  ),
+};
+
+// Sequential Circles
+export const SequentialCircles: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen grid grid-cols-3 gap-8 p-8">
+      {[0, 1, 2].map((i) => (
+        <SequenceAnimated
+          key={i}
+          initialSize="100%"
+          enableScale={false}
+          delay={i * 1500}
+        >
+          {(props) => (
+            <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5} />
+          )}
+        </SequenceAnimated>
+      ))}
+    </div>
+  ),
+};
+
+// ============================================================================
+// WITH CONTENT EXAMPLES
+// ============================================================================
+
+// Box with Text Content
+export const BoxWithText: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
+            <div className="p-8 text-center max-w-xs">
+              <h3 className="text-[#484D2E] font-bold text-2xl mb-4">
+                Hello World
+              </h3>
+              <p className="text-[#6B7456] text-sm">
+                This is a hand-drawn box with content inside. You can put
+                anything here!
+              </p>
+            </div>
+          </HandDrawnBox>
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// Circle with Text Content
+export const CircleWithText: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
+            <div className="p-8 text-center max-w-xs">
+              <h3 className="text-[#484D2E] font-bold text-2xl mb-4">
+                Hello Circle
+              </h3>
+              <p className="text-[#6B7456] text-sm">
+                This is a hand-drawn circle with content inside!
+              </p>
+            </div>
+          </HandDrawnCircle>
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// Box Product Card
+export const BoxProductCard: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
+            <div className="p-6 text-center">
+              <div className="w-24 h-24 mx-auto mb-4 bg-[#8B9A6E] rounded-full" />
+              <h3 className="text-[#484D2E] font-bold text-xl mb-2">
+                Product Name
+              </h3>
+              <p className="text-[#6B7456] text-sm mb-4">$99.99</p>
+              <button className="bg-[#484D2E] text-white px-6 py-2 rounded-full text-sm">
+                Add to Cart
+              </button>
+            </div>
+          </HandDrawnBox>
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// Circle Product Card
+export const CircleProductCard: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] h-screen flex items-center justify-center">
+      <InViewAnimated initialSize="400px" enableScale={false}>
+        {(props) => (
+          <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
+            <div className="p-6 text-center">
+              <div className="w-24 h-24 mx-auto mb-4 bg-[#8B9A6E] rounded-full" />
+              <h3 className="text-[#484D2E] font-bold text-xl mb-2">
+                Product Name
+              </h3>
+              <p className="text-[#6B7456] text-sm mb-4">$99.99</p>
+              <button className="bg-[#484D2E] text-white px-6 py-2 rounded-full text-sm">
+                Add to Cart
+              </button>
+            </div>
+          </HandDrawnCircle>
+        )}
+      </InViewAnimated>
+    </div>
+  ),
+};
+
+// ============================================================================
+// MIXED COMPOSITION EXAMPLE
+// ============================================================================
+
+// Mixed Shapes Gallery
+export const MixedShapes: Story = {
+  render: () => (
+    <div className="bg-[#E6E4D9] min-h-screen p-12">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-5xl font-bold text-[#484D2E] mb-12 text-center">
+          Hand-Drawn UI Gallery
+        </h1>
+
+        <div className="grid grid-cols-4 gap-6">
+          <div className="h-64">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={0}>
+              {(props) => (
+                <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
+                  <div className="p-4 text-center">
+                    <p className="text-[#484D2E] font-medium">Box 1</p>
+                  </div>
+                </HandDrawnBox>
+              )}
+            </InViewAnimated>
+          </div>
+
+          <div className="h-64">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={200}>
+              {(props) => (
+                <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
+                  <div className="p-4 text-center">
+                    <p className="text-[#484D2E] font-medium">Circle 1</p>
+                  </div>
+                </HandDrawnCircle>
+              )}
+            </InViewAnimated>
+          </div>
+
+          <div className="h-64">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={400}>
+              {(props) => (
+                <HandDrawnBox {...props} color="#6B7456" strokeWidth={0.5}>
+                  <div className="p-4 text-center">
+                    <p className="text-[#484D2E] font-medium">Box 2</p>
+                  </div>
+                </HandDrawnBox>
+              )}
+            </InViewAnimated>
+          </div>
+
+          <div className="h-64">
+            <InViewAnimated initialSize="100%" enableScale={false} delay={600}>
+              {(props) => (
+                <HandDrawnCircle {...props} color="#8B9A6E" strokeWidth={0.5}>
+                  <div className="p-4 text-center">
+                    <p className="text-[#484D2E] font-medium">Circle 2</p>
+                  </div>
+                </HandDrawnCircle>
+              )}
+            </InViewAnimated>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
