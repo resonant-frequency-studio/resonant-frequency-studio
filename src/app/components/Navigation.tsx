@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import ThemeToggle from './ThemeToggle';
 import {
   motion,
   useScroll,
-  useTransform,
   useMotionValueEvent,
   AnimatePresence,
 } from 'framer-motion';
@@ -13,9 +13,7 @@ import { cx } from 'class-variance-authority';
 
 const NAV_LINKS = [
   { href: '#about', text: 'About' },
-  { href: '#overview', text: 'Overview' },
   { href: '#works', text: 'Works' },
-  { href: '#pricing', text: 'Pricing' },
   { href: '#question', text: 'FAQ' },
   { href: '#contact', text: 'Contact' },
 ];
@@ -55,7 +53,7 @@ export default function Navigation({
           open: { width: 'auto', height: 'auto', borderRadius: '1rem' },
         }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="bg-[#CDCAB7] border-[#484D2E] border relative flex items-center justify-center overflow-hidden pointer-events-auto"
+        className="bg-brand-paper border-[#484D2E] border relative flex items-center justify-center overflow-hidden pointer-events-auto"
         style={{ transformOrigin: 'top right' }}
       >
         <div className="flex items-center p-2">
@@ -82,13 +80,19 @@ export default function Navigation({
               >
                 <Link
                   href={link.href}
-                  className="inline-block transition-all duration-400 text-xl hover:opacity-70 cursor-pointer text-[#484D2E]"
+                  className="inline-block transition-all duration-400 text-xl hover:opacity-70 cursor-pointer text-brand-paper-dark"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.text}
                 </Link>
               </motion.div>
             ))}
+            {/* Theme Toggle - Always visible */}
+            <div
+              className={`${isCollapsed && !isOpen ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'} transition-all duration-500 ease-in-out`}
+            >
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Toggle Button - Visible only when collapsed (as hamburger) or open (as close) */}
@@ -99,24 +103,24 @@ export default function Navigation({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-center text-[#484D2E] shrink-0"
+                className="flex items-center justify-center text-brand-paper-dark shrink-0"
               >
                 <div className={cx('space-y-1.5', { ['pl-6']: isOpen })}>
                   <motion.span
                     animate={
                       isOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }
                     }
-                    className="block w-6 h-0.5 bg-[#484D2E]"
+                    className="block w-6 h-0.5 bg-brand-paper-dark"
                   />
                   <motion.span
                     animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-                    className="block w-6 h-0.5 bg-[#484D2E]"
+                    className="block w-6 h-0.5 bg-brand-paper-dark"
                   />
                   <motion.span
                     animate={
                       isOpen ? { rotate: -45, y: -9 } : { rotate: 0, y: 0 }
                     }
-                    className="block w-6 h-0.5 bg-[#484D2E]"
+                    className="block w-6 h-0.5 bg-brand-paper-dark"
                   />
                 </div>
               </motion.button>

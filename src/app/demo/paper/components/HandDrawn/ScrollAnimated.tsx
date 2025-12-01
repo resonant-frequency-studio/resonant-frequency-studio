@@ -48,7 +48,7 @@ export default function ScrollAnimated({
   // Internal scroll tracking
   const { scrollYProgress: internalScrollProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end start'],
+    offset: ['start start', 'end end'],
   });
 
   // Create motion value for external scroll progress
@@ -81,7 +81,11 @@ export default function ScrollAnimated({
   const fillProgress = useTransform(scrollProgress, activeFillRange, [0, 1]);
 
   return (
-    <div ref={containerRef} className={`h-[${containerHeight}] relative`}>
+    <div
+      ref={containerRef}
+      style={{ height: containerHeight }}
+      className="relative"
+    >
       <div className="sticky top-0 h-screen w-full flex items-center justify-center">
         <div className="relative w-full h-full flex items-center justify-center">
           {children({ size, drawProgress, scrollProgress, fillProgress })}

@@ -4,11 +4,19 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useScroll, useMotionValueEvent } from 'framer-motion';
 import SoundWaves from '../../components/SoundWaves';
+import BurstLines from '../../components/BurstLines';
 import Navigation from '@/app/components/Navigation';
 import Hero from './components/Hero';
 import IntermediarySection from './components/IntermediarySection';
+import {
+  ScrollContextProvider,
+  useScrollContext,
+} from './context/ScrollContext';
+import WorksSection from './components/WorksSection';
+import { useThemeColors } from './hooks/useThemeColors';
+import { useCrossfade } from '../../hooks/useCrossfade';
 
-export default function PaperDemoPage() {
+const PaperDemoContent = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -21,12 +29,21 @@ export default function PaperDemoPage() {
     setScrollProgress(latest);
   });
 
+  const { boxScaleComplete } = useScrollContext();
+  const themeColors = useThemeColors();
+  const { toOpacity: burstOpacity } = useCrossfade(boxScaleComplete, 500);
+
   return (
-    <div ref={containerRef} className="min-h-[300vh] pointer-events-none">
+    <div ref={containerRef} className="relative pointer-events-none">
       {/* Fixed Background Layer */}
-      <div className="fixed inset-0 z-0">
-        <Image src="/paper.png" alt="Paper Demo" fill objectFit="cover" />
+      <div className="fixed inset-0 z-0 bg-brand-paper">
+        {/* <Image src="/paper.png" alt="Paper Demo" fill objectFit="cover" /> */}
         <SoundWaves scrollProgress={scrollProgress} />
+        <BurstLines
+          scrollProgress={scrollProgress}
+          opacity={burstOpacity}
+          lineColor={themeColors.light}
+        />
       </div>
 
       {/* Scrollable Content Layer */}
@@ -35,17 +52,26 @@ export default function PaperDemoPage() {
 
         <main className="flex flex-col">
           {/* Hero Section - 100vh */}
-          <div className="h-screen w-full relative">
+          <div className="h-screen relative">
             <Hero />
           </div>
+          <div className="pointer-events-auto">
+            {/* Intermediary Section - Scroll Driven */}
+            <IntermediarySection />
 
-          {/* Intermediary Section */}
-          <IntermediarySection />
-
-          {/* Spacer for scrolling effect */}
-          <div className="h-screen"></div>
+            {/* Works Section */}
+            <WorksSection />
+          </div>
         </main>
       </div>
     </div>
+  );
+};
+
+export default function PaperDemoPage() {
+  return (
+    <ScrollContextProvider>
+      <PaperDemoContent />
+    </ScrollContextProvider>
   );
 }

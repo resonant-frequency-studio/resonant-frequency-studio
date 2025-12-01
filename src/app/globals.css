@@ -3,11 +3,31 @@
 :root {
   --background: #121212;
   --foreground: #e4e4de;
+
+  /* Light theme (default) */
+  --theme-paper: #efece3;
+  --theme-paper-accent: #37619f;
+}
+
+/* Dark theme via data attribute (manual override) */
+[data-theme='dark'] {
+  --theme-paper: #37619f;
+  --theme-paper-accent: #efece3;
+}
+
+/* Dark theme via browser preference (when no manual override) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --theme-paper: #37619f;
+    --theme-paper-accent: #efece3;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-paper: var(--theme-paper);
+  --color-brand-paper-dark: var(--theme-paper-accent);
   --color-brand-ivory: #e4e4de;
   --color-brand-stone: #c4c5ba;
   --color-brand-ink: #121212;

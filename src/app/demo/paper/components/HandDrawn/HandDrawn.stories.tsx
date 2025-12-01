@@ -27,7 +27,9 @@ export const ScrollBox: Story = {
   render: () => (
     <div className="bg-[#E6E4D9]">
       <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+        <h1 className="text-4xl font-bold text-brand-paper-dark">
+          Scroll Down ↓
+        </h1>
       </div>
       <ScrollAnimated initialSize="40%" finalSize="100%">
         {(props) => (
@@ -44,7 +46,9 @@ export const ScrollCircle: Story = {
   render: () => (
     <div className="bg-[#E6E4D9]">
       <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+        <h1 className="text-4xl font-bold text-brand-paper-dark">
+          Scroll Down ↓
+        </h1>
       </div>
       <ScrollAnimated initialSize="40%" finalSize="100%">
         {(props) => (
@@ -65,7 +69,9 @@ export const InViewBox: Story = {
   render: () => (
     <div className="bg-[#E6E4D9] min-h-[200vh]">
       <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+        <h1 className="text-4xl font-bold text-brand-paper-dark">
+          Scroll Down ↓
+        </h1>
       </div>
       <div className="h-screen flex items-center justify-center">
         <InViewAnimated initialSize="400px" enableScale={false}>
@@ -83,7 +89,9 @@ export const InViewCircle: Story = {
   render: () => (
     <div className="bg-[#E6E4D9] min-h-[200vh]">
       <div className="h-screen flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-[#484D2E]">Scroll Down ↓</h1>
+        <h1 className="text-4xl font-bold text-brand-paper-dark">
+          Scroll Down ↓
+        </h1>
       </div>
       <div className="h-screen flex items-center justify-center">
         <InViewAnimated initialSize="400px" enableScale={false}>
@@ -371,7 +379,7 @@ export const BoxWithText: Story = {
         {(props) => (
           <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
             <div className="p-8 text-center max-w-xs">
-              <h3 className="text-[#484D2E] font-bold text-2xl mb-4">
+              <h3 className="text-brand-paper-dark font-bold text-2xl mb-4">
                 Hello World
               </h3>
               <p className="text-[#6B7456] text-sm">
@@ -394,7 +402,7 @@ export const CircleWithText: Story = {
         {(props) => (
           <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
             <div className="p-8 text-center max-w-xs">
-              <h3 className="text-[#484D2E] font-bold text-2xl mb-4">
+              <h3 className="text-brand-paper-dark font-bold text-2xl mb-4">
                 Hello Circle
               </h3>
               <p className="text-[#6B7456] text-sm">
@@ -417,11 +425,11 @@ export const BoxProductCard: Story = {
           <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
             <div className="p-6 text-center">
               <div className="w-24 h-24 mx-auto mb-4 bg-[#8B9A6E] rounded-full" />
-              <h3 className="text-[#484D2E] font-bold text-xl mb-2">
+              <h3 className="text-brand-paper-dark font-bold text-xl mb-2">
                 Product Name
               </h3>
               <p className="text-[#6B7456] text-sm mb-4">$99.99</p>
-              <button className="bg-[#484D2E] text-white px-6 py-2 rounded-full text-sm">
+              <button className="bg-brand-paper-dark text-white px-6 py-2 rounded-full text-sm">
                 Add to Cart
               </button>
             </div>
@@ -441,11 +449,11 @@ export const CircleProductCard: Story = {
           <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
             <div className="p-6 text-center">
               <div className="w-24 h-24 mx-auto mb-4 bg-[#8B9A6E] rounded-full" />
-              <h3 className="text-[#484D2E] font-bold text-xl mb-2">
+              <h3 className="text-brand-paper-dark font-bold text-xl mb-2">
                 Product Name
               </h3>
               <p className="text-[#6B7456] text-sm mb-4">$99.99</p>
-              <button className="bg-[#484D2E] text-white px-6 py-2 rounded-full text-sm">
+              <button className="bg-brand-paper-dark text-white px-6 py-2 rounded-full text-sm">
                 Add to Cart
               </button>
             </div>
@@ -465,7 +473,7 @@ export const MixedShapes: Story = {
   render: () => (
     <div className="bg-[#E6E4D9] min-h-screen p-12">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold text-[#484D2E] mb-12 text-center">
+        <h1 className="text-5xl font-bold text-brand-paper-dark mb-12 text-center">
           Hand-Drawn UI Gallery
         </h1>
 
@@ -475,7 +483,7 @@ export const MixedShapes: Story = {
               {(props) => (
                 <HandDrawnBox {...props} color="#484D2E" strokeWidth={0.5}>
                   <div className="p-4 text-center">
-                    <p className="text-[#484D2E] font-medium">Box 1</p>
+                    <p className="text-brand-paper-dark font-medium">Box 1</p>
                   </div>
                 </HandDrawnBox>
               )}
@@ -487,7 +495,9 @@ export const MixedShapes: Story = {
               {(props) => (
                 <HandDrawnCircle {...props} color="#484D2E" strokeWidth={0.5}>
                   <div className="p-4 text-center">
-                    <p className="text-[#484D2E] font-medium">Circle 1</p>
+                    <p className="text-brand-paper-dark font-medium">
+                      Circle 1
+                    </p>
                   </div>
                 </HandDrawnCircle>
               )}
@@ -499,7 +509,7 @@ export const MixedShapes: Story = {
               {(props) => (
                 <HandDrawnBox {...props} color="#6B7456" strokeWidth={0.5}>
                   <div className="p-4 text-center">
-                    <p className="text-[#484D2E] font-medium">Box 2</p>
+                    <p className="text-brand-paper-dark font-medium">Box 2</p>
                   </div>
                 </HandDrawnBox>
               )}
@@ -511,7 +521,9 @@ export const MixedShapes: Story = {
               {(props) => (
                 <HandDrawnCircle {...props} color="#8B9A6E" strokeWidth={0.5}>
                   <div className="p-4 text-center">
-                    <p className="text-[#484D2E] font-medium">Circle 2</p>
+                    <p className="text-brand-paper-dark font-medium">
+                      Circle 2
+                    </p>
                   </div>
                 </HandDrawnCircle>
               )}

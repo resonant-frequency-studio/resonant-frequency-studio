@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Instrument_Sans } from 'next/font/google';
 import './globals.css';
+import ScrollToTop from './components/ScrollToTop';
+import { ThemeProvider } from './components/ThemeProvider';
 
 const instrumentSans = Instrument_Sans({
   variable: '--font-instrument-sans',
@@ -27,7 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${instrumentSans.variable} font-sans antialiased`}>
-        {children}
+        <ThemeProvider>
+          <ScrollToTop />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

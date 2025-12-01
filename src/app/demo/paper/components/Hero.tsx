@@ -8,7 +8,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 1.5, y: '100%' }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[17vw] font-bold tracking-tight leading-[0.8] text-[#CDCAB7] [-webkit-text-stroke:3px_#484D2E] [paint-order:stroke_fill]"
+          className="text-[17vw] font-bold tracking-tight leading-[0.8] text-brand-paper-dark"
         >
           Resonant Frequency
         </motion.h1>
